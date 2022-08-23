@@ -580,7 +580,7 @@ ggplot(data=res_summary, aes(x=model, y=res_all, lty=explicit_gini, fill=n_param
   theme_bw()+
   scale_fill_brewer(name = "number of parameters", palette=6)+
   scale_linetype_discrete(name = "parameter intepretation")+
-  scale_y_discrete(name="average objective function result (fit)")+
+  scale_y_discrete(name="average fit")+
   xlab('')
 
 par(save_par)
