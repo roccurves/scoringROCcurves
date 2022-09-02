@@ -514,18 +514,18 @@ if(save_figures_flag) {dev.off()}
 if(save_figures_flag) {win.metafile("fig_3_rrfit.wmf", width = 5, height = 5)}
 save_par<-par(mar=c(2,2,1,1))
 
-plot(Rezac_x,Rezac_y, main='', xlab='', ylab='', lwd=3)
+plot(D1_x,D1_y, main='', xlab='', ylab='', lwd=3)
 
-curve(FuncBinormal(x,resultsfull$Binormal_1[which(resultsfull$names=='Rezac2011')],
-                   resultsfull$Binormal_2[which(resultsfull$names=='Rezac2011')]),add=TRUE, lwd=1)
+curve(FuncBinormal(x,resultsfull$Binormal_1[which(resultsfull$names=='D1')],
+                   resultsfull$Binormal_2[which(resultsfull$names=='D1')]),add=TRUE, lwd=1)
 
-curve(FuncBifractal(x,resultsfull$Bifractal_1[which(resultsfull$names=='Rezac2011')]
-                    , resultsfull$Bifractal_2[which(resultsfull$names=='Rezac2011')]),add=TRUE, lty=2, lwd=2)
+curve(FuncBifractal(x,resultsfull$Bifractal_1[which(resultsfull$names=='D1')]
+                    , resultsfull$Bifractal_2[which(resultsfull$names=='D1')]),add=TRUE, lty=2, lwd=2)
 
-curve(FuncBilogistic(x,resultsfull$Bilogistic_1[which(resultsfull$names=='Rezac2011')]
-                     , resultsfull$Bilogistic_2[which(resultsfull$names=='Rezac2011')]),add=TRUE, lty=3, lwd=2)
+curve(FuncBilogistic(x,resultsfull$Bilogistic_1[which(resultsfull$names=='D1')]
+                     , resultsfull$Bilogistic_2[which(resultsfull$names=='D1')]),add=TRUE, lty=3, lwd=2)
 
-curve(FuncPower(x,resultsfull$Power_1[which(resultsfull$names=='Rezac2011')]),add=TRUE, lty=4, lwd=2)
+curve(FuncPower(x,resultsfull$Power_1[which(resultsfull$names=='D1')]),add=TRUE, lty=4, lwd=2)
 
 legend( x="bottomright", 
         legend=c("Actual ROC curve points"
@@ -540,22 +540,22 @@ legend( x="bottomright",
 par(save_par)
 if(save_figures_flag) {dev.off()}
 
-paste0('Binormal: b=', resultsfull$Binormal_1[which(resultsfull$names=='Rezac2011')], ' gamma=', resultsfull$Binormal_2[which(resultsfull$names=='Rezac2011')], ' fobj=', resultsfull$Binormal_obj[which(resultsfull$names=='Rezac2011')])
-paste0('Bifractal: beta=', resultsfull$Bifractal_1[which(resultsfull$names=='Rezac2011')], ' gamma=', resultsfull$Bifractal_2[which(resultsfull$names=='Rezac2011')], ' fobj=', resultsfull$Bifractal_obj[which(resultsfull$names=='Rezac2011')])
-paste0('Bilogistic: alpha0=', resultsfull$Bilogistic_1[which(resultsfull$names=='Rezac2011')], ' alpha1=', resultsfull$Bilogistic_2[which(resultsfull$names=='Rezac2011')], ' fobj=', resultsfull$Bilogistic_obj[which(resultsfull$names=='Rezac2011')])
-paste0('Power: gamma=', resultsfull$Power_1[which(resultsfull$names=='Rezac2011')], ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='Rezac2011')])
-paste0('Power: theta=', (1-resultsfull$Power_1[which(resultsfull$names=='Rezac2011')])/(1+resultsfull$Power_1[which(resultsfull$names=='Rezac2011')]), ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='Rezac2011')])
+paste0('Binormal: b=', resultsfull$Binormal_1[which(resultsfull$names=='D1')], ' gamma=', resultsfull$Binormal_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Binormal_obj[which(resultsfull$names=='D1')])
+paste0('Bifractal: beta=', resultsfull$Bifractal_1[which(resultsfull$names=='D1')], ' gamma=', resultsfull$Bifractal_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Bifractal_obj[which(resultsfull$names=='D1')])
+paste0('Bilogistic: alpha0=', resultsfull$Bilogistic_1[which(resultsfull$names=='D1')], ' alpha1=', resultsfull$Bilogistic_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Bilogistic_obj[which(resultsfull$names=='D1')])
+paste0('Power: gamma=', resultsfull$Power_1[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='D1')])
+paste0('Power: theta=', (1-resultsfull$Power_1[which(resultsfull$names=='D1')])/(1+resultsfull$Power_1[which(resultsfull$names=='D1')]), ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='D1')])
 
 
-# Gini based on Rezac & Rezac data
+# Gini based on D1 data
 ginic<-function(bc, gc){
   #function for gini when we have cumulative goods and bads vectors
   sum((gc[2:(length(gc))]-gc[1:(length(gc)-1)])*
         (bc[2:(length(bc))]+bc[1:(length(bc)-1)]))-1
 } 
 
-ginic(Rezac_y, Rezac_x)
-ginic(RezacB_y, RezacB_x)
+ginic(D1_y, D1_x)
+
 
 
 # Figure 4
