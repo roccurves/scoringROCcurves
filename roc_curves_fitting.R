@@ -540,11 +540,13 @@ legend( x="bottomright",
 par(save_par)
 if(save_figures_flag) {dev.off()}
 
-paste0('Binormal: b=', resultsfull$Binormal_1[which(resultsfull$names=='D1')], ' gamma=', resultsfull$Binormal_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Binormal_obj[which(resultsfull$names=='D1')])
-paste0('Bifractal: beta=', resultsfull$Bifractal_1[which(resultsfull$names=='D1')], ' gamma=', resultsfull$Bifractal_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Bifractal_obj[which(resultsfull$names=='D1')])
-paste0('Bilogistic: alpha0=', resultsfull$Bilogistic_1[which(resultsfull$names=='D1')], ' alpha1=', resultsfull$Bilogistic_2[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Bilogistic_obj[which(resultsfull$names=='D1')])
-paste0('Power: gamma=', resultsfull$Power_1[which(resultsfull$names=='D1')], ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='D1')])
-paste0('Power: theta=', (1-resultsfull$Power_1[which(resultsfull$names=='D1')])/(1+resultsfull$Power_1[which(resultsfull$names=='D1')]), ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='D1')])
+paste0('', format(resultsfull$Binormal_obj[which(resultsfull$names=='D1')], digits=3, scientific = TRUE))
+
+paste0('Binormal: b=', round(resultsfull$Binormal_1[which(resultsfull$names=='D1')], 4), ' gamma=', round(resultsfull$Binormal_2[which(resultsfull$names=='D1')],4), ' fobj=', format(resultsfull$Binormal_obj[which(resultsfull$names=='D1')], digits=3))
+paste0('Bifractal: beta=', round(resultsfull$Bifractal_1[which(resultsfull$names=='D1')],4), ' gamma=', round(resultsfull$Bifractal_2[which(resultsfull$names=='D1')],4), ' fobj=', format(resultsfull$Bifractal_obj[which(resultsfull$names=='D1')], digits=3))
+paste0('Bilogistic: alpha0=', round(resultsfull$Bilogistic_1[which(resultsfull$names=='D1')],4), ' alpha1=', round(resultsfull$Bilogistic_2[which(resultsfull$names=='D1')],4), ' fobj=', format(resultsfull$Bilogistic_obj[which(resultsfull$names=='D1')], digits=3, scientific=TRUE))
+paste0('Power: gamma=', round(resultsfull$Power_1[which(resultsfull$names=='D1')],4), ' fobj=', format(resultsfull$Power_obj[which(resultsfull$names=='D1')], digits=3, scientific=TRUE))
+paste0('Power: theta=', round((1-resultsfull$Power_1[which(resultsfull$names=='D1')])/(1+resultsfull$Power_1[which(resultsfull$names=='D1')]),4), ' fobj=', resultsfull$Power_obj[which(resultsfull$names=='D1')])
 
 
 # Gini based on D1 data
