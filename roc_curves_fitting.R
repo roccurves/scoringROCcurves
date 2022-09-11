@@ -2,7 +2,8 @@ library(ggplot2)
 library(ggthemes)
 library(gtools)
 library("RColorBrewer")
-save_figures_flag=TRUE
+save_figures_flag=FALSE
+save_figures_EMF_flag=TRUE
 
 
 ### ROC curve models
@@ -463,6 +464,7 @@ View(results_rounded)
 # bifractal plot
 
 if(save_figures_flag) {win.metafile("fig_1_bifractal_curves.wmf", width = 5, height = 5)}
+if(save_figures_EMF_flag) {devEMF::emf("fig_1_bifractal_curves.emf", width = 5, height = 5, emfPlusFontToPath=TRUE)}
 save_par<-par(mar=c(2,2,1,1))
 
 
@@ -483,12 +485,13 @@ legend( x="bottomright",
         pch=c(NA,NA,NA,NA) )
 
 par(save_par)
-if(save_figures_flag) {dev.off()}
+if(save_figures_flag | save_figures_EMF_flag) {dev.off()}
 
 
 #Figure 2 
 # binormal plot
 if(save_figures_flag) {win.metafile("fig_2_binormal_curves.wmf", width = 5, height = 5)}
+if(save_figures_EMF_flag) {devEMF::emf("fig_2_binormal_curves.emf", width = 5, height = 5, emfPlusFontToPath=TRUE)}
 save_par<-par(mar=c(2,2,1,1))
 curve(FuncBinormal(x,1,.5),lwd=2, main='', xlab='', ylab='')
 curve(FuncBinormal(x,1.5,.5),add=TRUE, lty=2, lwd=2)
@@ -506,12 +509,14 @@ legend( x="bottomright",
         lwd=c(1,2,2,2),
         pch=c(NA,NA,NA,NA) )
 par(save_par)
-if(save_figures_flag) {dev.off()}
+if(save_figures_flag | save_figures_EMF_flag) {dev.off()}
 
 
 
 #Figure 3
 if(save_figures_flag) {win.metafile("fig_3_rrfit.wmf", width = 5, height = 5)}
+if(save_figures_EMF_flag) {devEMF::emf("fig_3_rrfit.emf", width = 5, height = 5, emfPlusFontToPath=TRUE)}
+
 save_par<-par(mar=c(2,2,1,1))
 
 plot(D1_x,D1_y, main='', xlab='', ylab='', lwd=3)
@@ -538,7 +543,7 @@ legend( x="bottomright",
         lwd=c(3,1,2,2,2),
         pch=c(1,NA,NA,NA,NA) )
 par(save_par)
-if(save_figures_flag) {dev.off()}
+if(save_figures_flag | save_figures_EMF_flag) {dev.off()}
 
 paste0('', format(resultsfull$Binormal_obj[which(resultsfull$names=='D1')], digits=3, scientific = TRUE))
 
@@ -573,6 +578,7 @@ res_summary$model<-factor(res_summary$model, levels=res_summary$model[order(res_
 
 
 if(save_figures_flag) {win.metafile("fig_4_compar.wmf", width = 6.5, height = 5)}
+if(save_figures_EMF_flag) {devEMF::emf("fig_4_compar.emf", width = 6.5, height = 5, emfPlusFontToPath=TRUE)}
 save_par<-par(mar=c(2,2,1,1))
 
 ggplot(data=res_summary, aes(x=model, y=res_all, lty=explicit_gini, fill=n_parameters)) +
@@ -586,7 +592,7 @@ ggplot(data=res_summary, aes(x=model, y=res_all, lty=explicit_gini, fill=n_param
   xlab('')
 
 par(save_par)
-if(save_figures_flag) {dev.off()}
+if(save_figures_flag | save_figures_EMF_flag) {dev.off()}
 
 # Properness check
 mean(resultsfull$Binormal_1)
@@ -605,7 +611,8 @@ curve(f1, 0, max(points[points>f1(points)])*50)
 abline(a=0, b=1)
 
 binoplot<-function(x, y, name){
-  if(save_figures_flag) {win.metafile(name, width = 5, height = 5)}
+  if(save_figures_flag) {win.metafile(paste0(name,".wmf"), width = 5, height = 5)}
+  if(save_figures_EMF_flag) {devEMF::emf(paste0(name,".emf"), width = 5, height = 5, emfPlusFontToPath=TRUE)}
   save_par<-par(mar=c(4.2,4,1,1))
   lmqq<-function(x,y){lm(qnorm(y[!(x==0|x==1|y==0|y==1)])
                          ~qnorm(x)[!(x==0|x==1|y==0|y==1)])}
@@ -620,12 +627,12 @@ binoplot<-function(x, y, name){
   abline(0,1, lty=2)
   abline(lmqq(x,y))
   par(save_par)
-  if(save_figures_flag) {dev.off()}
+  if(save_figures_flag | save_figures_EMF_flag) {dev.off()}
 }
 
 
-binoplot(A1_x, A1_y, "fig_5a_a1binormal.wmf")
-binoplot(RezacB_x, RezacB_y, "fig_5b_RRbinormal.wmf")
-binoplot(Tobback_x, Tobback_y, "fig_5c_Tobbackbinormal.wmf")
-binoplot(C1_x, C1_y, "fig_5d_C1binormal.wmf")
+binoplot(A1_x, A1_y, "fig_5a_a1binormal")
+binoplot(RezacB_x, RezacB_y, "fig_5b_RRbinormal")
+binoplot(Tobback_x, Tobback_y, "fig_5c_Tobbackbinormal")
+binoplot(C1_x, C1_y, "fig_5d_C1binormal")
 
