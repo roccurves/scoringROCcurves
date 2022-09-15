@@ -474,10 +474,10 @@ curve(FuncBifractal(x,1,.5),add=TRUE, lty=3, lwd=2)
 curve(FuncBifractal(x,0,.5),add=TRUE, lty=4, lwd=2)
 
 legend( x="bottomright", 
-        legend=c(expression(paste("Bifractal curve with ", beta, " = .5 and ", gamma, " = .5"))
-                 , expression(paste("Bifractal curve with ", beta, " = .7 and ", gamma, " = .5"))
-                 , expression(paste("Bifractal curve with ", beta, " = 1 and ", gamma, " = .5"))
-                 , expression(paste("Bifractal curve with ", beta, " = 0 and ", gamma, " = .5"))
+        legend=c(expression(paste("Bifractal curve with ", beta, " = 0.5 and ", gamma, " = 0.5"))
+                 , expression(paste("Bifractal curve with ", beta, " = 0.7 and ", gamma, " = 0.5"))
+                 , expression(paste("Bifractal curve with ", beta, " = 1 and ", gamma, " = 0.5"))
+                 , expression(paste("Bifractal curve with ", beta, " = 0 and ", gamma, " = 0.5"))
                  
         ),
         lty=c(1,2,3,4),
@@ -499,10 +499,10 @@ curve(FuncBinormal(x,2,.5),add=TRUE, lty=3, lwd=2)
 curve(FuncBinormal(x,.7,.5),add=TRUE, lty=4, lwd=2)
 
 legend( x="bottomright", 
-        legend=c(expression(paste("Binormal curve with b = 1 and ", gamma, " = .5"))
-                 , expression(paste("Binormal curve with b = 1.5 and ", gamma, " = .5"))
-                 , expression(paste("Binormal curve with b = 2.0 and ", gamma, " = .5"))
-                 , expression(paste("Binormal curve with b = .7 and ", gamma, " = .5"))
+        legend=c(expression(paste("Binormal curve with b = 1 and ", gamma, " = 0.5"))
+                 , expression(paste("Binormal curve with b = 1.5 and ", gamma, " = 0.5"))
+                 , expression(paste("Binormal curve with b = 2.0 and ", gamma, " = 0.5"))
+                 , expression(paste("Binormal curve with b = 0.7 and ", gamma, " = 0.5"))
                  
         ),
         lty=c(1,2,3,4),
